@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4588664148823927286}
   - component: {fileID: 1936258657347438331}
   - component: {fileID: 3906282937968578379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2806644580265677615}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ElevatorPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3064022768311869597}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ElevatorStop
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8168166817213153798}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ElevatorStart
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
