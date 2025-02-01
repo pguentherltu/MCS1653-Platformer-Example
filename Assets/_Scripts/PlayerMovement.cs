@@ -44,6 +44,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.transform.CompareTag("Elevator"))
+        {
+            transform.SetParent(collision.gameObject.transform, true); // true = keep world position
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.transform.CompareTag("Elevator"))
+        {
+            transform.parent = null; //could also SetParent(null)
+        }
+    }
+
     private bool IsGrounded()
     {
          return groundCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));

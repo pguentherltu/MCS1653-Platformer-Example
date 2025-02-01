@@ -9,6 +9,15 @@ public class FollowCam : MonoBehaviour
     public float zDistance = 10.0f;
     public float allowableOffset = 3.0f;
 
+    public GameObject bg0;
+    public float bg0speed = 0.8f;
+
+    public GameObject bg1;
+    public float bg1speed = 0.6f;
+
+    public GameObject bg2;
+    public float bg2speed = 0.4f;
+
     private GameObject player;
 
     // Improvements to consider:
@@ -28,7 +37,19 @@ public class FollowCam : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position + Vector3.back * zDistance) > allowableOffset)
         {
+            Vector3 originalPosition = transform.position;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position + Vector3.back * zDistance, speed * Time.deltaTime);
+            Vector3 newPosition = transform.position;
+            Vector3 delta = newPosition - originalPosition;
+            
+            Vector3 bg0offset = delta * bg0speed;
+            bg0.transform.position += bg0offset;
+
+            Vector3 bg1offset = delta * bg1speed;
+            bg1.transform.position += bg1offset;
+
+            Vector3 bg2offset = delta * bg2speed;
+            bg2.transform.position += bg2offset;
         }
     }
 }
