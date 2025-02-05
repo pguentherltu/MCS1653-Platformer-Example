@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     public float jumpForce = 12.0f;
     public BoxCollider2D groundCollider;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private const float gravity = 2.0f;
+    private SpriteRenderer spriteRenderer;
 
     // Improvements to consider:
     // - Double jump
@@ -18,8 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = gravity;
+        animator.Play("player_idle");
     }
 
     // Update is called once per frame
@@ -28,11 +32,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+            spriteRenderer.flipX = true;
+            animator.Play("player-running");
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+            spriteRenderer.flipX = false;
+            animator.Play("player-running");
         }
 
         if (IsGrounded())
@@ -40,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+                animator.Play("player_jumping");
             }
         }
     }
